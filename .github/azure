@@ -1,0 +1,31 @@
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build-and-sign:
+    runs-on: windows-latest
+    name: Build app and sign files with Azure Code Signing
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup .NET Core SDK
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: 7.0.x
+
+      - name: Sign files with Azure Code Signing
+        uses: azure/azure-code-signing-action@v0.3.0
+        with:
+          azure-tenant-id: '5714469a-084e-4170-9d57-dd884943a3ee'
+          azure-client-id: '71946f9c-3b22-4042-b93f-913625b5cdc5'
+          azure-client-secret: 'a0d9bbc5-ebc1-4323-808e-51a48319a58f'
+          endpoint: https://eus.codesigning.azure.net/
+          code-signing-account-name: vscx-codesigning
+          certificate-profile-name: vscx-certificate-profile
+          files-folder: ${{ github.workspace }}
+          files-folder-filter: exe,dll
+          file-digest: SHA256
+          timestamp-rfc3161: http://timestamp.acs.microsoft.com
+          timestamp-digest: SHA256
