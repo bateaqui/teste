@@ -19,8 +19,8 @@ jobs:
         uses: azure/azure-code-signing-action@v0.3.0
         with:
           azure-tenant-id: '5714469a-084e-4170-9d57-dd884943a3ee'
-          azure-client-id: '71946f9c-3b22-4042-b93f-913625b5cdc5'
-          azure-client-secret: 'a0d9bbc5-ebc1-4323-808e-51a48319a58f'
+          azure-client-id: '4d3b4fca-1a51-4a29-bc5d-569e73737c14'
+          azure-client-secret: 'It.8Q~__EWzpCrBeVRfzC-MMVuaHTL6EWzGqddqe'
           endpoint: https://eus.codesigning.azure.net/
           code-signing-account-name: vscx-codesigning
           certificate-profile-name: vscx-certificate-profile
